@@ -1,15 +1,22 @@
+
 import { motion } from "framer-motion";
-import { ArrowRight, Command } from "lucide-react";
+import { ArrowRight, Shield, Award, Clock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
-import { FeaturesSection } from "@/components/features/FeaturesSection";
-import { PricingSection } from "@/components/pricing/PricingSection";
-import LogoCarousel from "@/components/LogoCarousel";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { Link } from "react-router-dom";
 
 const Index = () => {
+  const featuredBrands = [
+    { name: "Rolex", logo: "/lovable-uploads/rolex-logo.png" },
+    { name: "Patek Philippe", logo: "/lovable-uploads/patek-logo.png" },
+    { name: "Audemars Piguet", logo: "/lovable-uploads/ap-logo.png" },
+    { name: "Richard Mille", logo: "/lovable-uploads/rm-logo.png" },
+    { name: "Omega", logo: "/lovable-uploads/omega-logo.png" },
+    { name: "Cartier", logo: "/lovable-uploads/cartier-logo.png" },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-foreground">
       <Navigation />
@@ -21,7 +28,6 @@ const Index = () => {
         transition={{ duration: 0.5 }}
         className="relative container px-4 pt-40 pb-20"
       >
-        {/* Background */}
         <div 
           className="absolute inset-0 -z-10 bg-[#0A0A0A]"
         />
@@ -33,19 +39,19 @@ const Index = () => {
           className="inline-block mb-4 px-4 py-1.5 rounded-full glass"
         >
           <span className="text-sm font-medium">
-            <Command className="w-4 h-4 inline-block mr-2" />
-            Next-gen crypto trading platform
+            <Crown className="w-4 h-4 inline-block mr-2" />
+            Authenticated Luxury Timepieces
           </span>
         </motion.div>
         
         <div className="max-w-4xl relative z-10">
           <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight text-left">
             <span className="text-gray-200">
-              <TextGenerateEffect words="Trade crypto with" />
+              <TextGenerateEffect words="Where Time Becomes" />
             </span>
             <br />
-            <span className="text-white font-medium">
-              <TextGenerateEffect words="confidence & security" />
+            <span className="text-[#D4AF37] font-medium">
+              <TextGenerateEffect words="Timeless Luxury" />
             </span>
           </h1>
           
@@ -55,8 +61,7 @@ const Index = () => {
             transition={{ delay: 0.4 }}
             className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl text-left"
           >
-            Experience seamless cryptocurrency trading with advanced features, real-time analytics, and institutional-grade security.{" "}
-            <span className="text-white">Start trading in minutes.</span>
+            Discover the world's most prestigious timepieces. From vintage Rolex to contemporary Richard Mille, each watch tells a story of craftsmanship and excellence.
           </motion.p>
           
           <motion.div
@@ -65,12 +70,16 @@ const Index = () => {
             transition={{ delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 items-start"
           >
-            <Button size="lg" className="button-gradient">
-              Start Trading Now
-            </Button>
-            <Button size="lg" variant="link" className="text-white">
-              View Markets <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <Link to="/collections">
+              <Button size="lg" className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black hover:opacity-90">
+                Explore Collections
+              </Button>
+            </Link>
+            <Link to="/services">
+              <Button size="lg" variant="link" className="text-white">
+                Our Services <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
 
@@ -83,41 +92,94 @@ const Index = () => {
           <div className="glass rounded-xl overflow-hidden">
             <img
               src="/lovable-uploads/c32c6788-5e4a-4fee-afee-604b03113c7f.png"
-              alt="CryptoTrade Dashboard"
+              alt="Luxury Watch Collection"
               className="w-full h-auto"
             />
           </div>
         </motion.div>
       </motion.section>
 
-      {/* Logo Carousel */}
-      <LogoCarousel />
+      {/* Featured Brands */}
+      <section className="container px-4 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#D4AF37]">
+            Prestigious Brands
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            We specialize in the world's most coveted watch manufacturers
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          {featuredBrands.map((brand, index) => (
+            <motion.div
+              key={brand.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="glass glass-hover rounded-lg p-6 text-center"
+            >
+              <div className="h-16 flex items-center justify-center mb-2">
+                <span className="text-lg font-semibold text-[#D4AF37]">
+                  {brand.name}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* Features Section */}
-      <div id="features" className="bg-black">
-        <FeaturesSection />
-      </div>
+      <section className="container px-4 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="glass glass-hover rounded-xl p-8 text-center"
+          >
+            <Shield className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
+            <h3 className="text-xl font-semibold mb-3">Authenticated Pieces</h3>
+            <p className="text-muted-foreground">
+              Every timepiece undergoes rigorous authentication by our certified experts
+            </p>
+          </motion.div>
 
-      {/* Pricing Section */}
-      <div id="pricing" className="bg-black">
-        <PricingSection />
-      </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="glass glass-hover rounded-xl p-8 text-center"
+          >
+            <Award className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
+            <h3 className="text-xl font-semibold mb-3">Premium Service</h3>
+            <p className="text-muted-foreground">
+              White-glove service from selection to delivery and beyond
+            </p>
+          </motion.div>
 
-      {/* Testimonials Section */}
-      <div className="bg-black">
-        <TestimonialsSection />
-      </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="glass glass-hover rounded-xl p-8 text-center"
+          >
+            <Clock className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
+            <h3 className="text-xl font-semibold mb-3">Investment Value</h3>
+            <p className="text-muted-foreground">
+              Expert guidance on timepieces that appreciate in value over time
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <section className="container px-4 py-20 relative bg-black">
-        <div 
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: 'url("/lovable-uploads/21f3edfb-62b5-4e35-9d03-7339d803b980.png")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+      <section className="container px-4 py-20 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -125,22 +187,21 @@ const Index = () => {
           className="bg-[#0A0A0A]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 text-center relative z-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to start trading?
+            Begin Your Horological Journey
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of traders who have already discovered the power of our platform.
+            Schedule a private consultation with our watch experts and discover the perfect timepiece for your collection.
           </p>
-          <Button size="lg" className="button-gradient">
-            Create Account
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+          <Link to="/contact">
+            <Button size="lg" className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black">
+              Schedule Consultation
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <div className="bg-black">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

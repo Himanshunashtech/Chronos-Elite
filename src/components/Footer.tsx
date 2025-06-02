@@ -1,5 +1,7 @@
-import { Github, Twitter } from "lucide-react";
+
+import { Instagram, Facebook, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,62 +10,95 @@ const Footer = () => {
         <div className="glass glass-hover rounded-xl p-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <h3 className="font-medium text-lg">CryptoTrade</h3>
+              <h3 className="font-medium text-lg text-[#D4AF37]">Chronos Elite</h3>
               <p className="text-sm text-muted-foreground">
-                Empowering traders with advanced crypto trading solutions.
+                Curating the world's finest luxury timepieces for discerning collectors since 1999.
               </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="icon">
-                  <Twitter className="w-4 h-4" />
+                  <Instagram className="w-4 h-4" />
                 </Button>
                 <Button variant="ghost" size="icon">
-                  <Github className="w-4 h-4" />
+                  <Facebook className="w-4 h-4" />
+                </Button>
+                <Button variant="ghost" size="icon">
+                  <Twitter className="w-4 h-4" />
                 </Button>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-medium">Trading</h4>
+              <h4 className="font-medium">Collections</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#features" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Markets
-                  </a>
+                  <Link to="/collections/rolex" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Rolex
+                  </Link>
                 </li>
                 <li>
-                  <a href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Trading Fees
-                  </a>
+                  <Link to="/collections/patek-philippe" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Patek Philippe
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/collections/audemars-piguet" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Audemars Piguet
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/collections" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    View All Brands
+                  </Link>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-medium">Resources</h4>
+              <h4 className="font-medium">Services</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Trading Guide
-                  </a>
+                  <Link to="/services" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Authentication
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Market Analysis
-                  </a>
+                  <Link to="/services" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Restoration
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Investment Advisory
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Consignment
+                  </Link>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-medium">Legal</h4>
+              <h4 className="font-medium">Company</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link to="/about" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a href="#" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
                     Terms of Service
                   </a>
                 </li>
@@ -73,7 +108,7 @@ const Footer = () => {
 
           <div className="mt-8 pt-8 border-t border-white/10">
             <p className="text-sm text-muted-foreground text-center">
-              © {new Date().getFullYear()} Rezaul Arif. All rights reserved.
+              © {new Date().getFullYear()} Chronos Elite. All rights reserved. | Geneva • London • New York
             </p>
           </div>
         </div>
