@@ -57,12 +57,14 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button 
-              size="sm"
-              className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black hover:opacity-90 transition-opacity rounded-full"
-            >
-              Book Consultation
-            </Button>
+            <Link to="/book-consultation">
+              <Button 
+                size="sm"
+                className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black hover:opacity-90 transition-opacity rounded-full"
+              >
+                Book Consultation
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation */}
@@ -89,12 +91,14 @@ const Navigation = () => {
                       {item.name}
                     </Link>
                   ))}
-                  <Button 
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black mt-4"
-                  >
-                    Book Consultation
-                  </Button>
+                  <Link to="/book-consultation">
+                    <Button 
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black mt-4"
+                    >
+                      Book Consultation
+                    </Button>
+                  </Link>
                 </div>
               </SheetContent>
             </Sheet>

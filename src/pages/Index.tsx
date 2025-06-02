@@ -1,17 +1,14 @@
 
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Award, Clock, Crown, Heart, BookOpen, Vault } from "lucide-react";
+import { ArrowRight, Shield, Award, Clock, Crown, Heart, Star, Gem, Zap, Globe, Users, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { Link } from "react-router-dom";
 import WatchRing from "@/components/WatchRing";
-import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 const Index = () => {
-  const { playChimeSound, playTickSound } = useSoundEffects();
-  
   const featuredBrands = [
     { name: "Rolex", logo: "/lovable-uploads/rolex-logo.png" },
     { name: "Patek Philippe", logo: "/lovable-uploads/patek-logo.png" },
@@ -21,10 +18,18 @@ const Index = () => {
     { name: "Cartier", logo: "/lovable-uploads/cartier-logo.png" },
   ];
 
-  const handlePremiumInteraction = (action: string) => {
-    playChimeSound();
-    console.log(`Premium interaction: ${action}`);
-  };
+  const collectionsData = [
+    { name: "Vintage Classics", count: "120+", description: "Timeless pieces from the golden era" },
+    { name: "Modern Luxury", count: "200+", description: "Contemporary masterpieces" },
+    { name: "Limited Editions", count: "50+", description: "Rare and exclusive timepieces" },
+    { name: "Investment Grade", count: "80+", description: "Appreciating value watches" },
+  ];
+
+  const testimonialsData = [
+    { name: "Alexander M.", text: "Exceptional service and authentic pieces. My Daytona purchase was seamless.", rating: 5 },
+    { name: "Victoria S.", text: "The most luxurious watch buying experience. Highly recommended.", rating: 5 },
+    { name: "James R.", text: "Expert knowledge and white-glove service from start to finish.", rating: 5 },
+  ];
 
   return (
     <div className="min-h-screen bg-black text-foreground overflow-hidden relative">
@@ -99,7 +104,6 @@ const Index = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           className="inline-block mb-4 px-4 py-1.5 rounded-full glass relative z-10"
-          onMouseEnter={playTickSound}
         >
           <span className="text-sm font-medium">
             <Crown className="w-4 h-4 inline-block mr-2" />
@@ -152,7 +156,6 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black hover:opacity-90 transform hover:scale-105 transition-all duration-300"
-                  onClick={() => handlePremiumInteraction("explore_collections")}
                 >
                   Explore Collections
                 </Button>
@@ -162,55 +165,75 @@ const Index = () => {
                   size="lg" 
                   variant="link" 
                   className="text-white hover:text-[#D4AF37] transition-colors"
-                  onClick={() => handlePremiumInteraction("book_consultation")}
                 >
                   Book Consultation <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
             </motion.div>
-
-            {/* Quick Access Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-3 mt-8"
-            >
-              <Link to="/vault">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10"
-                  onClick={() => handlePremiumInteraction("view_vault")}
-                >
-                  <Vault className="w-4 h-4 mr-2" />
-                  My Vault
-                </Button>
-              </Link>
-              <Link to="/journal">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10"
-                  onClick={() => handlePremiumInteraction("read_journal")}
-                >
-                  <BookOpen className="w-4 h-4 mr-2" />
-                  Chronos Journal
-                </Button>
-              </Link>
-            </motion.div>
           </div>
 
-          {/* Enhanced 3D Watch Ring with interaction sounds */}
+          {/* Enhanced 3D Watch Ring */}
           <div className="flex justify-center lg:justify-end">
-            <div onMouseEnter={playTickSound}>
-              <WatchRing />
-            </div>
+            <WatchRing />
           </div>
         </div>
       </motion.section>
 
-      {/* Featured Brands with hover effects */}
+      {/* Collections Overview Section */}
+      <section className="container px-4 py-20 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#D4AF37]">
+            Curated Collections
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore our carefully selected timepieces across different categories
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {collectionsData.map((collection, index) => (
+            <motion.div
+              key={collection.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="glass glass-hover rounded-xl p-6 text-center group relative overflow-hidden"
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                animate={{
+                  background: [
+                    "linear-gradient(45deg, rgba(212, 175, 55, 0.1), transparent)",
+                    "linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent)",
+                    "linear-gradient(225deg, rgba(212, 175, 55, 0.1), transparent)",
+                  ],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="text-3xl font-bold text-[#D4AF37] mb-2"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              >
+                {collection.count}
+              </motion.div>
+              <h3 className="text-xl font-semibold mb-2 relative z-10">{collection.name}</h3>
+              <p className="text-muted-foreground text-sm relative z-10">{collection.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Brands with 3D hover effects */}
       <section className="container px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -233,13 +256,35 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="glass glass-hover rounded-lg p-6 text-center transform hover:scale-105 transition-all duration-300 group"
-              onMouseEnter={playTickSound}
+              className="glass glass-hover rounded-lg p-6 text-center transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              whileHover={{ 
+                rotateY: 15,
+                rotateX: 5,
+                z: 50 
+              }}
+              style={{ 
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
             >
-              <div className="h-16 flex items-center justify-center mb-2">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 via-transparent to-[#D4AF37]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                animate={{
+                  x: ["-100%", "100%"],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <div className="h-16 flex items-center justify-center mb-2 relative z-10">
                 <motion.span 
                   className="text-lg font-semibold text-[#D4AF37] group-hover:text-[#F4E99B] transition-colors"
                   whileHover={{ scale: 1.1 }}
+                  style={{ 
+                    textShadow: "0 0 10px rgba(212, 175, 55, 0.5)" 
+                  }}
                 >
                   {brand.name}
                 </motion.span>
@@ -249,24 +294,87 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section with enhanced animations */}
+      {/* Statistics Section with 3D counters */}
+      <section className="container px-4 py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 via-transparent to-[#D4AF37]/5" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
+          {[
+            { icon: Users, number: "10,000+", label: "Happy Clients" },
+            { icon: Star, number: "50,000+", label: "Watches Sold" },
+            { icon: Globe, number: "150+", label: "Countries Served" },
+            { icon: TrendingUp, number: "98%", label: "Satisfaction Rate" },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.2 }}
+              className="text-center group"
+            >
+              <motion.div
+                className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4AF37]/10 mb-4 group-hover:bg-[#D4AF37]/20 transition-colors"
+                whileHover={{ 
+                  scale: 1.2,
+                  rotateY: 360,
+                }}
+                transition={{ duration: 0.6 }}
+              >
+                <stat.icon className="w-8 h-8 text-[#D4AF37]" />
+              </motion.div>
+              <motion.div
+                className="text-3xl font-bold text-[#D4AF37] mb-2"
+                whileHover={{ scale: 1.1 }}
+                animate={{
+                  textShadow: [
+                    "0 0 5px rgba(212, 175, 55, 0.3)",
+                    "0 0 15px rgba(212, 175, 55, 0.6)",
+                    "0 0 5px rgba(212, 175, 55, 0.3)",
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                {stat.number}
+              </motion.div>
+              <p className="text-muted-foreground">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Features Section with enhanced 3D animations */}
       <section className="container px-4 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass glass-hover rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-300 group"
-            onMouseEnter={playTickSound}
+            className="glass glass-hover rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+            whileHover={{ 
+              rotateX: 10,
+              rotateY: 10,
+              z: 50 
+            }}
+            style={{ 
+              transformStyle: "preserve-3d",
+              perspective: "1000px"
+            }}
           >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            />
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
+              className="relative z-10"
             >
               <Shield className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
             </motion.div>
-            <h3 className="text-xl font-semibold mb-3">Authenticated Pieces</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold mb-3 relative z-10">Authenticated Pieces</h3>
+            <p className="text-muted-foreground relative z-10">
               Every timepiece undergoes rigorous authentication by our certified experts
             </p>
           </motion.div>
@@ -275,17 +383,29 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="glass glass-hover rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-300 group"
-            onMouseEnter={playTickSound}
+            className="glass glass-hover rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+            whileHover={{ 
+              rotateX: 10,
+              rotateY: -10,
+              z: 50 
+            }}
+            style={{ 
+              transformStyle: "preserve-3d",
+              perspective: "1000px"
+            }}
           >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-[#D4AF37]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            />
             <motion.div
               whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.3 }}
+              className="relative z-10"
             >
               <Award className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
             </motion.div>
-            <h3 className="text-xl font-semibold mb-3">Premium Service</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold mb-3 relative z-10">Premium Service</h3>
+            <p className="text-muted-foreground relative z-10">
               White-glove service from selection to delivery and beyond
             </p>
           </motion.div>
@@ -294,32 +414,109 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="glass glass-hover rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-300 group"
-            onMouseEnter={playTickSound}
+            className="glass glass-hover rounded-xl p-8 text-center transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+            whileHover={{ 
+              rotateX: -10,
+              rotateY: 10,
+              z: 50 
+            }}
+            style={{ 
+              transformStyle: "preserve-3d",
+              perspective: "1000px"
+            }}
           >
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-[#D4AF37]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            />
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              className="relative z-10"
             >
               <Clock className="w-12 h-12 text-[#D4AF37] mx-auto mb-4" />
             </motion.div>
-            <h3 className="text-xl font-semibold mb-3">Investment Value</h3>
-            <p className="text-muted-foreground">
+            <h3 className="text-xl font-semibold mb-3 relative z-10">Investment Value</h3>
+            <p className="text-muted-foreground relative z-10">
               Expert guidance on timepieces that appreciate in value over time
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
+      {/* Testimonials Section with 3D cards */}
+      <section className="container px-4 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#D4AF37]">
+            What Our Clients Say
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Testimonials from our valued collectors and enthusiasts
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonialsData.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+              className="glass glass-hover rounded-xl p-6 relative overflow-hidden group"
+              whileHover={{ 
+                rotateY: 5,
+                scale: 1.05,
+                z: 30 
+              }}
+              style={{ 
+                transformStyle: "preserve-3d",
+                perspective: "1000px"
+              }}
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="flex mb-4 relative z-10">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: (index * 0.2) + (i * 0.1) }}
+                  >
+                    <Star className="w-5 h-5 text-[#D4AF37] fill-current" />
+                  </motion.div>
+                ))}
+              </div>
+              <p className="text-muted-foreground mb-4 relative z-10">"{testimonial.text}"</p>
+              <p className="font-semibold text-[#D4AF37] relative z-10">- {testimonial.name}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Enhanced CTA Section with 3D effects */}
       <section className="container px-4 py-20 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-[#0A0A0A]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 text-center relative z-10 overflow-hidden"
+          className="bg-[#0A0A0A]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 text-center relative z-10 overflow-hidden group"
+          whileHover={{ 
+            scale: 1.02,
+            rotateX: 2,
+            rotateY: 2 
+          }}
+          style={{ 
+            transformStyle: "preserve-3d",
+            perspective: "1000px"
+          }}
         >
-          {/* Background animation */}
+          {/* Enhanced background animation */}
           <motion.div
             className="absolute inset-0 opacity-10"
             animate={{
@@ -336,6 +533,18 @@ const Index = () => {
             }}
           />
           
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            animate={{
+              x: ["-100%", "100%"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative z-10">
             Begin Your Horological Journey
           </h2>
@@ -343,14 +552,18 @@ const Index = () => {
             Schedule a private consultation with our watch experts and discover the perfect timepiece for your collection.
           </p>
           <Link to="/book-consultation">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black transform hover:scale-105 transition-all duration-300 relative z-10"
-              onClick={() => handlePremiumInteraction("schedule_consultation")}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Schedule Consultation
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-[#D4AF37] to-[#F4E99B] text-black transform transition-all duration-300 relative z-10"
+              >
+                Schedule Consultation
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </motion.div>
           </Link>
         </motion.div>
       </section>
