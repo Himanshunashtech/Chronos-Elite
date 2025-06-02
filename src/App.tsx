@@ -9,6 +9,9 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Collections from "./pages/Collections";
+import BookConsultation from "./pages/BookConsultation";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import Rolex from "./pages/brands/Rolex";
 import PatekPhilippe from "./pages/brands/PatekPhilippe";
 import AudemarsPiguet from "./pages/brands/AudemarsPiguet";
@@ -35,6 +38,9 @@ const App = () => (
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/collections" element={<Collections />} />
+            <Route path="/book-consultation" element={<BookConsultation />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/collections/rolex" element={<Rolex />} />
             <Route path="/collections/patek-philippe" element={<PatekPhilippe />} />
             <Route path="/collections/audemars-piguet" element={<AudemarsPiguet />} />

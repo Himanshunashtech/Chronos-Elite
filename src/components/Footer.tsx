@@ -72,8 +72,8 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
-                    Consignment
+                  <Link to="/book-consultation" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                    Book Consultation
                   </Link>
                 </li>
               </ul>
@@ -93,14 +93,14 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                  <Link to="/privacy" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
+                  <Link to="/terms" className="text-sm text-muted-foreground hover:text-[#D4AF37] transition-colors">
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
